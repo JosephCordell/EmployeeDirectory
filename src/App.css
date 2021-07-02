@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+.container {
+  padding-top: 30px;
+  width: 80%;
+  margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input {
+  padding: 5px 15px;
+  width: 300px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.user-list {
+  margin-top: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.user {
+  list-style: none;
+  margin: 10px 0;
+  padding: 10px;
+  background: #eee;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.user-id {
+  color: red;
+  margin-right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-name {
+  color: blue;
+}
+
+.user-age {
+  margin-left: auto;
+}
+
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tr {
+  text-align: center;
+  background-color: bisque;
+}
+
+tr:hover {
+  background-color: rgb(231, 173, 103);
+}
+
+img {
+  border: 2px solid black;
+  border-radius: 100px;
+}
+
+th {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.header {
+
+ text-align: center;
+ padding: 20px;
+}
+
+.hover:hover {
+  cursor: pointer;
 }

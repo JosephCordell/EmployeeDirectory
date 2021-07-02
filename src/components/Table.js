@@ -1,22 +1,22 @@
-export default function Table({ employees }) {
+export default function Table({ employees, sort }) {
   return (
     <div>
-      <table id={'table'}>
+      <table className={'container'}>
         <thead>
           <tr>
             <th>*</th>
-            <th>First</th>
-            <th>Last</th>
+            <th onClick={() => sort('first')} className={'hover'}>First &nbsp;<i className='fas fa-sort'/> </th>
+            <th onClick={() => sort('last')} className={'hover'}>Last </th>
             <th>Email</th>
             <th>Phone</th>
             <th>Country</th>
           </tr>
         </thead>
-        <tbody> 
+        <tbody > 
           {employees && employees.length > 0 ? (
 
             employees.map((employee) => (
-              <tr key={employee.login.uuid}>
+              <tr key={employee.login.uuid} >
             <td>
             <img
             className={'headshot'}
