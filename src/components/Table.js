@@ -1,10 +1,11 @@
 export default function Table({ employees, sort }) {
   return (
     <div>
+          {employees && employees.length > 0 ? (
       <table className={'container'}>
         <thead>
           <tr>
-            <th>*</th>
+            <th>Photo</th>
             <th onClick={() => sort('first')} className={'hover'}>First &nbsp;<i className='fas fa-sort'/> </th>
             <th onClick={() => sort('last')} className={'hover'}>Last </th>
             <th>Email</th>
@@ -13,13 +14,11 @@ export default function Table({ employees, sort }) {
           </tr>
         </thead>
         <tbody > 
-          {employees && employees.length > 0 ? (
 
-            employees.map((employee) => (
+{            employees.map((employee) => (
               <tr key={employee.login.uuid} >
             <td>
             <img
-            className={'headshot'}
             alt={employee.name.last}
             src={employee.picture.medium}
             />
@@ -30,11 +29,14 @@ export default function Table({ employees, sort }) {
             <td>{employee.phone}</td>
             <td>{employee.location.country}</td>
             </tr>
-            ))
-            ) : ( <h1> No Results Found! </h1>)
-          }
-        </tbody>
+            ))}
+           
+          </tbody>
       </table>
+            ) : ( 
+            <h1 className={'noResults'}> No Results Found! </h1>
+            )
+          }
     </div>
   );
 }

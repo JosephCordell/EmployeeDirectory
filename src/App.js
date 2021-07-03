@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get('https://randomuser.me/api/?results=10');
+      const request = await axios.get('https://randomuser.me/api/?results=25');
       setEmployees(request.data.results);
     }
 
@@ -37,37 +37,34 @@ function App() {
   }, []);
 
   const sort = (column) => {
-    console.log(column);
     const current =
       filteredEmployees.length > 0 ? filteredEmployees : employees;
-    console.log(sortState);
     const updateSort = sortState
-      ? current.sort( (a, b) => {
-        const nameA = a.name.first 
-        const nameB = b.name.first 
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
+      ? current.sort((a, b) => {
+          const nameA = a.name.first;
+          const nameB = b.name.first;
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
 
-        return 0;
-      })
-      : current.sort( (a, b) => {
-        const nameA = a.name.first 
-        const nameB = b.name.first 
-        if (nameA > nameB) {
-          return -1;
-        }
-        if (nameA < nameB) {
-          return 1;
-        }
+          return 0;
+        })
+      : current.sort((a, b) => {
+          const nameA = a.name.first;
+          const nameB = b.name.first;
+          if (nameA > nameB) {
+            return -1;
+          }
+          if (nameA < nameB) {
+            return 1;
+          }
 
-        return 0;
-      });
+          return 0;
+        });
 
-    console.log(updateSort);
     setFiltersEmployees(updateSort);
     setSortState(!sortState);
   };

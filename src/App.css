@@ -35,7 +35,6 @@
   margin-left: auto;
 }
 
-
 table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -61,11 +60,14 @@ th {
 }
 
 .header {
-
- text-align: center;
- padding: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .hover:hover {
   cursor: pointer;
+}
+
+.noResults {
+  text-align: center;
 }
