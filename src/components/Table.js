@@ -34,7 +34,24 @@ export default function Table({ employees, sort }) {
           </tbody>
       </table>
             ) : ( 
+              <>
+            <table className={'container'}>
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th onClick={() => sort('first')} className={'hover'}>First &nbsp;<i className='fas fa-sort'/> </th>
+                <th onClick={() => sort('last')} className={'hover'}>Last </th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Country</th>
+              </tr>
+            </thead>
+            <tbody > 
+
+              </tbody>
+          </table>
             <h1 className={'noResults'}> No Results Found! </h1>
+          </>
             )
           }
     </div>
