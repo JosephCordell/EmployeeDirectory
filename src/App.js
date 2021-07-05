@@ -7,7 +7,6 @@ import Header from './components/Header';
 function App() {
   const [employees, setEmployees] = useState([]);
   const [filteredEmployees, setFiltersEmployees] = useState([]);
-  const [search, setSearch] = useState();
   const [sortState, setSortState] = useState(true);
 
   const filter = (e) => {
@@ -20,10 +19,8 @@ function App() {
         );
       });
       setFiltersEmployees(results);
-      setSearch(keyword.length);
     } else {
-      setFiltersEmployees([]);
-      setSearch(keyword.length);
+      setFiltersEmployees(employees);
     }
   };
 
@@ -31,39 +28,33 @@ function App() {
     async function fetchData() {
       const request = await axios.get('https://randomuser.me/api/?results=25');
       setEmployees(request.data.results);
+      setFiltersEmployees(request.data.results);
     }
 
     fetchData();
   }, []);
 
   const sort = (column) => {
+    const columnArray = column.split('.');
     const current =
       filteredEmployees.length > 0 ? filteredEmployees : employees;
-    const updateSort = sortState
-      ? current.sort((a, b) => {
-          const nameA = a.name.first;
-          const nameB = b.name.first;
-          if (nameA < nameB) {
-            return -1;
-          }
-          if (nameA > nameB) {
-            return 1;
-          }
-
-          return 0;
-        })
-      : current.sort((a, b) => {
-          const nameA = a.name.first;
-          const nameB = b.name.first;
-          if (nameA > nameB) {
-            return -1;
-          }
-          if (nameA < nameB) {
-            return 1;
-          }
-
-          return 0;
-        });
+    const updateSort = current.sort((a, b) => {
+      const nameA =
+        columnArray.length === 1
+          ? a[column]
+          : a[columnArray[0]][columnArray[1]];
+      const nameB =
+        columnArray.length === 1
+          ? b[column]
+          : b[columnArray[0]][columnArray[1]];
+      if (nameA < nameB) {
+        return sortState ? -1 : 1;
+      }
+      if (nameA > nameB) {
+        return sortState ? 1 : -1;
+      }
+      return 0;
+    });
 
     setFiltersEmployees(updateSort);
     setSortState(!sortState);
@@ -72,14 +63,7 @@ function App() {
   return (
     <div>
       <Header filter={filter} />
-      <Table
-        employees={
-          filteredEmployees.length > 0 || search > 0
-            ? filteredEmployees
-            : employees
-        }
-        sort={sort}
-      />
+      <Table employees={filteredEmployees} sort={sort} />
     </div>
   );
 }
