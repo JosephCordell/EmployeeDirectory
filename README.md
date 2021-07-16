@@ -31,7 +31,7 @@ A directory of random people. You are able to filter employees by both first and
 
 ## 2 Usage
 
-Website link: https://directemployees.herokuapp.com//
+Website link: https://directemployees.herokuapp.com/
 
 ## 3 License
     Copyright © 2021 Joseph Cordell
