@@ -5,6 +5,8 @@
 ## Description
 A directory of random people. You are able to filter employees by both first and last name. You can sort employees by first name in ascending and descending order by clicking on column header. 
 
+![Webpage](./assets/images/EmployeeDirectory.png)
+
 1. [Installation](#1-installation)
 2. [Usage](#2-usage)
 3. [License](#3-license)

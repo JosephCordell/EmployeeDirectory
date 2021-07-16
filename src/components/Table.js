@@ -26,7 +26,10 @@ export default function Table({ employees, sort }) {
         <tbody>
           {employees && employees.length > 0 ? (
             employees.map((employee, index) => (
-              <tr key={employee.login.uuid} className={index % 2 === 0 ? 'odd' : 'even'}>
+              <tr
+                key={employee.login.uuid}
+                className={index % 2 === 0 ? 'odd' : 'even'}
+              >
                 <td>
                   <img alt={employee.name.last} src={employee.picture.medium} />
                 </td>
